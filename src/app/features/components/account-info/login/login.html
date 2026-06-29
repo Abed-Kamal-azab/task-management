@@ -1,0 +1,79 @@
+<div class="w-full h-full bg-Surface-low pb-12">
+  <div class="h-20 pr-10 pl-10 flex items-center">
+    <div class="flex gap-2 items-center">
+      <img src="/assets/icons/logo-icon.svg" alt="logo-icon" class="w-5 h-5" />
+      <p class="font-bold text-xl">TASKLY</p>
+    </div>
+  </div>
+  <div class="bg-background w-xl h-full mx-auto p-12 mt-16 rounded-lg">
+    <div class="pb-10 flex flex-col gap-2 text-center">
+      <p class="text-3xl font-semibold text-neutral-high">Welcome Back</p>
+      <p class="text-sm text-neutral-md">Please enter your details to access your workspace</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="login()" class="pb-4 flex flex-col gap-6">
+      <div>
+        <p
+          class="font-bold text-xs text-neutral-md"
+          [ngClass]="
+            emailControl.invalid && emailControl.touched ? 'text-red-600' : 'text-neutral-md'
+          "
+        >
+          EMAIL
+        </p>
+        <input
+          formControlName="email"
+          type="email"
+          placeholder="yourname@company.com"
+          class="w-full bg-surface-highest h-12 rounded-sm px-4 py-3.5 mt-2 placeholder:text-base placeholder:text-placeholder focus:outline-none invalid:not-focus:bg-invalid"
+          [ngClass]="
+            emailControl.invalid && emailControl.touched ? 'bg-invalid' : 'bg-surface-highest'
+          "
+        />
+      </div>
+
+      <div>
+        <p
+          class="font-bold text-xs text-neutral-md"
+          [ngClass]="
+            passwordControl.invalid && passwordControl.touched ? 'text-red-600' : 'text-neutral-md'
+          "
+        >
+          PASSWORD
+        </p>
+        <input
+          formControlName="password"
+          type="password"
+          class="w-full h-12 rounded-sm px-4 py-3.5 mt-2 placeholder:text-base placeholder:text-placeholder focus:outline-none invalid:not-focus:bg-invalid"
+          placeholder="Enter your password"
+          [ngClass]="
+            passwordControl.invalid && passwordControl.touched ? 'bg-invalid' : 'bg-surface-highest'
+          "
+        />
+      </div>
+      <div class="flex justify-between items-center pt-2 pb-2">
+        <div class="flex gap-2 items-center">
+          <input type="checkbox" formControlName="checkbox" class="w-4 h-4" />
+          <p class="font-medium text-sm text-remember leading-5">Remember Me</p>
+        </div>
+        <a class="text-primary font-medium text-sm" routerLink="/forget-password"
+          >Forgot Password?</a
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="cursor-pointer bg-linear-to-r from-primary to-primary-container h-12 font-semibold text-base rounded-sm text-background"
+      >
+        Log In
+      </button>
+    </form>
+
+    <div class="pt-12 text-center">
+      <p class="text-sm text--neutral-md">
+        Don't have an account?
+        <span class="text-primary font-semibold"> <a routerLink="/sign-up">Sign Up</a> </span>
+      </p>
+    </div>
+  </div>
+</div>

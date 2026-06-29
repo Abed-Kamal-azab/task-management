@@ -1,0 +1,7 @@
+{
+  "tailwindCSS.experimental.configFile": null,
+  "scss.lint.unknownAtRules": "ignore",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
+}

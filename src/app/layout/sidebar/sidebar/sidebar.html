@@ -1,0 +1,152 @@
+<div class="flex h-screen bg-gray-100 overflow-hidden">
+  <!-- Sidebar Container -->
+  <aside
+    [ngClass]="isCollapsed() ? 'w-20' : 'w-3xs'"
+    class="fixed inset-y-0 left-0 z-50 flex flex-col p-4 bg-Surface-low md:static md:translate-x-0"
+    [class.-translate-x-full]="isCollapsed()"
+  >
+    <!-- Header / Logo Section -->
+    <div class="flex h-16 items-center pb-8">
+      <div class="h-20 flex items-center px-3">
+        <div class="flex gap-2 items-center">
+          <img src="/assets/icons/logo-icon.svg" alt="logo-icon" class="w-5 h-5" />
+          @if (!isCollapsed()) {
+            <p class="font-bold text-xl">TASKLY</p>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="flex flex-col flex-1 g-1">
+      <a
+        class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
+        routerLink="/projects"
+        routerLinkActive="bg-background"
+      >
+        <img
+          class="w-5.5 h-4"
+          [src]="
+            isCollapsed() ? '/assets/icons/projects2-Icon.svg' : '/assets/icons/projects-Icon.svg'
+          "
+          alt="projects-Icon"
+        />
+        @if (!isCollapsed()) {
+          <p class="text-sm text-primary font-medium">Projects</p>
+        }
+      </a>
+      <a
+        class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
+        routerLink="/projects"
+        routerLinkActive="bg-background
+"
+      >
+        <img
+          class="w-5.5 h-4"
+          [src]="isCollapsed() ? '/assets/icons/epics2-Icon.svg' : '/assets/icons/epics-Icon.svg'"
+          alt="epics2-Icon"
+        />
+        @if (!isCollapsed()) {
+          <p class="text-sm text-primary font-medium">Projects Epics</p>
+        }
+      </a>
+      <a
+        class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
+        routerLink="/projects"
+        routerLinkActive="bg-background"
+      >
+        <img
+          class="w-5.5 h-4"
+          [src]="isCollapsed() ? '/assets/icons/tasks2-Icon.svg' : '/assets/icons/tasks-Icon.svg'"
+          alt="tasks2-Icon"
+        />
+        @if (!isCollapsed()) {
+          <p class="text-sm text-primary font-medium">Projects Tasks</p>
+        }
+      </a>
+
+      <a
+        class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
+        routerLink="/projects"
+        routerLinkActive="bg-background"
+      >
+        <img
+          class="w-5.5 h-4"
+          [src]="
+            isCollapsed() ? '/assets/icons/members2-Icon.svg' : '/assets/icons/members-Icon.svg'
+          "
+          alt="members-Icon"
+        />
+        @if (!isCollapsed()) {
+          <p class="text-sm text-primary font-medium">Projects Members</p>
+        }
+      </a>
+
+      <a
+        class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
+        routerLink="/projects"
+        routerLinkActive="bg-background"
+      >
+        <img
+          class="w-5.5 h-4"
+          [src]="
+            isCollapsed() ? '/assets/icons/details2-Icon.svg' : '/assets/icons/details-Icon.svg'
+          "
+          alt="details-Icon"
+        />
+
+        @if (!isCollapsed()) {
+          <p class="text-sm text-primary font-medium">Projects Details</p>
+        }
+      </a>
+    </nav>
+    <div class="flex flex-col pt-6 border-t-1 border-neutral-low/20 border-solid">
+      <button (click)="toggleSidebar()">
+        <a class="h-10 flex gap-3 py-2.5 px-3 rounded-sm" routerLink="/projects">
+          <img
+            class="w-4.5 h-4.5"
+            [src]="
+              isCollapsed()
+                ? '/assets/icons/right-collapse-Icon.svg'
+                : '/assets/icons/left-coolapse-Icon.svg'
+            "
+            alt="collapse-icon"
+          />
+          @if (!isCollapsed()) {
+            <p class="text-sm text-neutral-high font-medium cursor-pointer">Collapse</p>
+          }
+        </a>
+      </button>
+
+      <a class="h-10 flex gap-3 py-2.5 px-3 rounded-sm" (click)="logout()">
+        <img class="w-4.5 h-4.5" src="/assets/icons/logout-Icon.svg" alt="" />
+        @if (!isCollapsed()) {
+          <p class="text-sm text-error font-medium cursor-pointer">Logout</p>
+        }
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Layout Content -->
+  <div class="bg-background flex-1 flex flex-col overflow-hidden">
+    <!-- Navbar / Header inside content area -->
+    <header
+      class="px-6 py-3 h-16 flex justify-end border-b-1 border-neutral-low/10 border-solid shadow-x"
+    >
+      <div class="flex gap-4">
+        <div class="flex flex-col items-end">
+          <p class="font-semibold text-sm text-neutral-high">Mahmoud Taha</p>
+          <p class="font-bold text-[10px] tracking-[1px] text-primary">PROJECT MANAGER</p>
+        </div>
+        <div class="w-10 h-10 bg-primary-container flex items-center justify-center rounded-lg">
+          <p class="text-background font-bold text-base">MT</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dynamic Content Views -->
+    <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
+      <p class="text-gray-700">Your layout text or router-outlet content goes here.</p>
+    </main>
+  </div>
+</div>

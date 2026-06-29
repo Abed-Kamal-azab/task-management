@@ -1,0 +1,168 @@
+<div class="w-full h-full bg-Surface-low pb-12">
+  <div class="h-20 pr-10 pl-10 flex items-center">
+    <div class="flex gap-2 items-center">
+      <img src="/assets/icons/logo-icon.svg" alt="logo-icon" class="w-5 h-5" />
+      <p class="font-bold text-xl">TASKLY</p>
+    </div>
+  </div>
+  <div class="bg-background w-xl mx-auto p-12 rounded-lg">
+    <div class="pb-10 flex flex-col gap-2 text-center">
+      <p class="text-3xl font-semibold text-neutral-high">Create your workspace</p>
+      <p class="text-sm text-neutral-md">Join the editorial approach to task management.</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="signUp()" class="pb-4 flex flex-col gap-6">
+      <div>
+        <p
+          class="font-bold text-xs text-neutral-md"
+          [ngClass]="
+            nameControl.invalid && nameControl.touched ? 'text-red-600' : 'text-neutral-md'
+          "
+        >
+          NAME
+        </p>
+        <input
+          formControlName="name"
+          type="text"
+          class="w-full h-12 rounded-sm px-4 py-3.5 mt-2 placeholder:text-base placeholder:text-placeholder focus:outline-none"
+          placeholder="Enter your full name"
+          [ngClass]="
+            nameControl.invalid && nameControl.touched ? 'bg-invalid' : 'bg-surface-highest'
+          "
+        />
+        <span class="text-xs text-neutral-low mt-2">3-50 characters, letters only.</span>
+      </div>
+
+      <div>
+        <p
+          class="font-bold text-xs text-neutral-md"
+          [ngClass]="
+            emailControl.invalid && emailControl.touched ? 'text-red-600' : 'text-neutral-md'
+          "
+        >
+          EMAIL
+        </p>
+        <input
+          formControlName="email"
+          type="email"
+          class="w-full bg-surface-highest h-12 rounded-sm px-4 py-3.5 mt-2 placeholder:text-base placeholder:text-placeholder focus:outline-none invalid:not-focus:bg-invalid"
+          [ngClass]="
+            emailControl.invalid && emailControl.touched ? 'bg-invalid' : 'bg-surface-highest'
+          "
+        />
+      </div>
+
+      <div>
+        <p class="font-bold text-xs text-neutral-md">
+          JOB TITLE <span class="text-neutral-low">(Optional)</span>
+        </p>
+        <input
+          formControlName="jobTitle"
+          type="text"
+          class="w-full bg-surface-highest h-12 rounded-sm px-4 py-3.5 mt-2 placeholder:text-base placeholder:text-placeholder focus:outline-none"
+          placeholder="e.g. Project Manager"
+        />
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1/2">
+          <p class="font-bold text-xs text-neutral-md">PASSWORD</p>
+          <input
+            formControlName="password"
+            type="password"
+            class="w-full bg-surface-highest h-12 rounded-sm px-4 py-3.5 mt-2 placeholder:text-base placeholder:text-placeholder focus:outline-none invalid:not-focus:bg-invalid"
+            placeholder="Password"
+          />
+        </div>
+
+        <div class="w-1/2">
+          <p
+            class="font-bold text-xs text-neutral-md"
+            [ngClass]="
+              confirmPasswordControl.invalid && confirmPasswordControl.touched
+                ? 'text-red-600'
+                : 'text-neutral-md'
+            "
+          >
+            CONFIRM PASSWORD
+          </p>
+          <input
+            formControlName="confirmPassword"
+            type="password"
+            class="w-full h-12 rounded-sm px-4 py-3.5 mt-2 placeholder:text-base placeholder:text-placeholder focus:outline-none"
+            placeholder="Repeat your password"
+            [ngClass]="
+              confirmPasswordControl.invalid && confirmPasswordControl.touched
+                ? 'bg-invalid'
+                : 'bg-surface-highest'
+            "
+          />
+        </div>
+      </div>
+      <div class="p-4 bg-validator rounded-lg flex flex-col gap-2">
+        <div class="flex gap-2 items-center">
+          @if (
+            !form.get('password')?.hasError('minlength') &&
+            form.get('password')?.value.toString().length >= 8 &&
+            !form.get('password')?.hasError('maxLength') &&
+            form.get('password')?.value.toString().length <= 64
+          ) {
+            <img src="/assets/icons/check-validators.svg" alt="green-check-Icon" class="h-3 w-3" />
+          } @else {
+            <img
+              src="/assets/icons/empty-check-validators.svg"
+              alt="green-check-Icon"
+              class="h-3 w-3"
+            />
+          }
+          <p class="text-xs">At least 8 characters</p>
+        </div>
+
+        <div class="flex gap-2 items-center">
+          @if (
+            !form.get('password')?.hasError('hasNumber') &&
+            !form.get('password')?.hasError('hasLowercase') &&
+            !form.get('password')?.hasError('hasUppercase') &&
+            form.get('password')?.dirty &&
+            form.get('password')?.value !== ''
+          ) {
+            <img src="/assets/icons/check-validators.svg" alt="green-check-Icon" class="h-3 w-3" />
+          } @else {
+            <img
+              src="/assets/icons/empty-check-validators.svg"
+              alt="green-check-Icon"
+              class="h-3 w-3"
+            />
+          }
+          <p class="text-xs">One uppercase, lowercase, and digit</p>
+        </div>
+
+        <div class="flex gap-2 items-center">
+          @if (!form.get('password')?.hasError('hasSpecialCharacter')) {
+            <img src="/assets/icons/check-validators.svg" alt="green-check-Icon" class="h-3 w-3" />
+          } @else {
+            <img
+              src="/assets/icons/empty-check-validators.svg"
+              alt="green-check-Icon"
+              class="h-3 w-3"
+            />
+          }
+          <p class="text-xs">One special character</p>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="cursor-pointer bg-linear-to-r from-primary to-primary-container h-12 font-semibold text-base rounded-sm text-background"
+      >
+        Create Account
+      </button>
+    </form>
+
+    <div class="pt-8 text-center">
+      <p class="text-sm text--neutral-md">
+        Already have an account?
+        <span class="text-primary font-semibold"> <a routerLink="/login">Log in</a> </span>
+      </p>
+    </div>
+  </div>
+</div>
