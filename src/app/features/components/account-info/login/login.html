@@ -1,11 +1,11 @@
-<div class="w-full h-full bg-Surface-low pb-12">
+<div class="w-full min-h-lvh bg-Surface-low pb-12">
   <div class="h-20 pr-10 pl-10 flex items-center">
     <div class="flex gap-2 items-center">
       <img src="/assets/icons/logo-icon.svg" alt="logo-icon" class="w-5 h-5" />
       <p class="font-bold text-xl">TASKLY</p>
     </div>
   </div>
-  <div class="bg-background w-xl h-full mx-auto p-12 mt-16 rounded-lg">
+  <div class="bg-background w-xl mx-auto p-12 mt-16 rounded-lg">
     <div class="pb-10 flex flex-col gap-2 text-center">
       <p class="text-3xl font-semibold text-neutral-high">Welcome Back</p>
       <p class="text-sm text-neutral-md">Please enter your details to access your workspace</p>
@@ -32,7 +32,7 @@
         />
       </div>
 
-      <div>
+      <div class="relative">
         <p
           class="font-bold text-xs text-neutral-md"
           [ngClass]="
@@ -43,13 +43,21 @@
         </p>
         <input
           formControlName="password"
-          type="password"
+          [type]="isVisible() ? 'text' : 'password'"
           class="w-full h-12 rounded-sm px-4 py-3.5 mt-2 placeholder:text-base placeholder:text-placeholder focus:outline-none invalid:not-focus:bg-invalid"
           placeholder="Enter your password"
           [ngClass]="
             passwordControl.invalid && passwordControl.touched ? 'bg-invalid' : 'bg-surface-highest'
           "
         />
+        <button class="absolute top-10 right-4" (click)="toggleVisibility()">
+          <img
+            class=""
+            [src]="isVisible() ? '/assets/icons/eye-off.svg' : '/assets/icons/eye-Icon.svg'"
+            src="/assets/icons/eye-Icon.svg"
+            alt="eye-Icon"
+          />
+        </button>
       </div>
       <div class="flex justify-between items-center pt-2 pb-2">
         <div class="flex gap-2 items-center">

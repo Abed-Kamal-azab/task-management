@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -22,9 +22,7 @@ export class Login implements OnInit {
   formBuilder = inject(FormBuilder);
   private accountService = inject(AccountService);
   private router = inject(Router);
-
-  name!: string;
-  department!: string;
+  isVisible = signal(false);
 
   ngOnInit(): void {
     this.initFormModule();
@@ -47,13 +45,18 @@ export class Login implements OnInit {
       this.accountService.logIn(loginData).subscribe({
         next: (res: SignInResponse) => {
           console.log(res);
-          // alert('Welcome , we are login successfully');
+          // console.log(res?.user?.user_metadata?.department);
+          // console.log(res?.user?.user_metadata?.name);
           this.router.navigate(['/projects']);
         },
         complete: () => {},
         error: () => {},
       });
     }
+  }
+
+  toggleVisibility() {
+    this.isVisible.set(!this.isVisible());
   }
   get emailControl() {
     return this.form.get('email')!;

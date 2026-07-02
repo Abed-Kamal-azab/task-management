@@ -135,11 +135,13 @@
     >
       <div class="flex gap-4">
         <div class="flex flex-col items-end">
-          <p class="font-semibold text-sm text-neutral-high">Mahmoud Taha</p>
-          <p class="font-bold text-[10px] tracking-[1px] text-primary">PROJECT MANAGER</p>
+          <p class="font-semibold text-sm text-neutral-high capitalize">{{ userInfo()?.name }}</p>
+          <p class="font-bold text-[10px] tracking-[1px] text-primary uppercase">
+            {{ userInfo()?.department }}
+          </p>
         </div>
         <div class="w-10 h-10 bg-primary-container flex items-center justify-center rounded-lg">
-          <p class="text-background font-bold text-base">MT</p>
+          <p class="text-background font-bold text-base">{{ userInfo()?.name | shortenWords }}</p>
         </div>
       </div>
     </header>

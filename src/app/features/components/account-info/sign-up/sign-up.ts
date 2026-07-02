@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -22,7 +22,7 @@ export class SignUp implements OnInit {
   formBuilder = inject(FormBuilder);
   router = inject(Router);
   private accountService = inject(AccountService);
-
+  isVisible = signal(false);
   ngOnInit(): void {
     this.initFormModel();
   }
@@ -56,7 +56,7 @@ export class SignUp implements OnInit {
 
   signUp(): void {
     if (this.form.valid) {
-      console.log('form is valid :', this.form.value);
+      console.log('form is valid :', this.form.getRawValue());
       this.accountService.signUp(this.form.value).subscribe({
         next: () => {
           alert('You Are Sign Up Successfully');
@@ -66,6 +66,9 @@ export class SignUp implements OnInit {
         error: () => {},
       });
     }
+  }
+  toggleVisibility() {
+    this.isVisible.set(!this.isVisible());
   }
 
   get nameControl() {
