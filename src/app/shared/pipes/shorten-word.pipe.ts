@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'shortenWords',
 })
 export class ShortenWordsPipe implements PipeTransform {
-  transform(value: string): string {
+  transform(value: string | null | undefined): string {
     if (!value) return '';
 
     // تقسيم النص إلى كلمات بناءً على المسافات ثم جلب الحرف الأول

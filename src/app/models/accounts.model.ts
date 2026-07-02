@@ -22,6 +22,7 @@ export interface SignInResponse {
     id: string;
     email: string;
     role: string;
+    user_metadata: UserMetadata;
   };
 }
 
@@ -32,4 +33,9 @@ export interface signupResponse {
     name: string;
     department: string;
   };
+}
+
+export interface UserMetadata {
+  name: string;
+  department: string;
 }
