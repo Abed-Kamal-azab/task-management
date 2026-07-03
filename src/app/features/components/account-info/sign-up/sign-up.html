@@ -161,8 +161,9 @@
         </div>
       </div>
       <button
+        [disabled]="form.invalid"
         type="submit"
-        class="cursor-pointer bg-linear-to-r from-primary to-primary-container h-12 font-semibold text-base rounded-sm text-background"
+        class="cursor-pointer bg-linear-to-r from-primary to-primary-container h-12 font-semibold text-base rounded-sm text-background hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         Create Account
       </button>

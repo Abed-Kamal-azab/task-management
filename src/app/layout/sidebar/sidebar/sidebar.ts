@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { AccountService } from '../../../features/services/account-service';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { ShortenWordsPipe } from '../../../shared/pipes/shorten-word.pipe';
 
 @Component({
   selector: 'tm-sidebar',
-  imports: [CommonModule, ShortenWordsPipe],
+  imports: [CommonModule, ShortenWordsPipe, RouterOutlet],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })

@@ -21,7 +21,7 @@
     <nav class="flex flex-col flex-1 g-1">
       <a
         class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="/projects"
+        routerLink="projects/project"
         routerLinkActive="bg-background"
       >
         <img
@@ -147,8 +147,10 @@
     </header>
 
     <!-- Main Dynamic Content Views -->
-    <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
-      <p class="text-gray-700">Your layout text or router-outlet content goes here.</p>
+    <main class="flex-1 overflow-x-hidden overflow-y-auto p-8">
+      <!-- <p class="text-gray-700">Your layout text or router-outlet content goes here.</p> -->
+      <!-- <tm-add-new-project></tm-add-new-project> -->
+      <router-outlet></router-outlet>
     </main>
   </div>
 </div>
