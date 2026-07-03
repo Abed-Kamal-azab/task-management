@@ -23,7 +23,7 @@ export class ApiService {
     );
   }
 
-  put(endpoint: string, data: string) {
-    return this.httpClient.put(`${this.apiUrl}${endpoint}`, data);
+  put<T>(endpoint: string, data: unknown) {
+    return this.httpClient.put<T>(`${this.apiUrl}${endpoint}`, data);
   }
 }

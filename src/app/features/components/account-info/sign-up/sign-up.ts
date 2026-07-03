@@ -23,6 +23,7 @@ export class SignUp implements OnInit {
   router = inject(Router);
   private accountService = inject(AccountService);
   isVisible = signal(false);
+
   ngOnInit(): void {
     this.initFormModel();
   }

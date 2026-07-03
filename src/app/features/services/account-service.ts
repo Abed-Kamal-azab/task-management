@@ -44,4 +44,12 @@ export class AccountService {
       }),
     );
   }
+
+  forgetPassword(email: { email: string }): Observable<unknown> {
+    return this.apiService.post('auth/v1/recover', email);
+  }
+
+  resetPassword(password: { password: string }): Observable<unknown> {
+    return this.apiService.put('auth/v1/user', { password: password.password });
+  }
 }
