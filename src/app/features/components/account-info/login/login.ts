@@ -58,6 +58,7 @@ export class Login implements OnInit {
   toggleVisibility() {
     this.isVisible.set(!this.isVisible());
   }
+
   get emailControl() {
     return this.form.get('email')!;
   }
