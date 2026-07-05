@@ -20,6 +20,10 @@ export class AccountService {
   private apiService = inject(ApiService);
   readonly userMetadata = signal<UserMetadata | null>(null);
 
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem(accessTokenKey) && !!localStorage.getItem(refreshTokenKey);
+  }
+
   signUp(data: SignUpRequest): Observable<signupResponse> {
     return this.apiService.post<signupResponse>('auth/v1/signup', data);
   }

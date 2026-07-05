@@ -23,6 +23,8 @@ export class Login implements OnInit {
   private accountService = inject(AccountService);
   private router = inject(Router);
   isVisible = signal(false);
+  authStatus!: string | null;
+  auth!: string | null;
 
   ngOnInit(): void {
     this.initFormModule();
@@ -45,8 +47,12 @@ export class Login implements OnInit {
       this.accountService.logIn(loginData).subscribe({
         next: (res: SignInResponse) => {
           console.log(res);
-          // console.log(res?.user?.user_metadata?.department);
-          // console.log(res?.user?.user_metadata?.name);
+          console.log(res.user.role);
+          localStorage.setItem('auth', res.user.role);
+          this.authStatus = res.user.role;
+          console.log(this.authStatus);
+          this.auth = localStorage.getItem('auth');
+
           this.router.navigate(['/projects']);
         },
         complete: () => {},

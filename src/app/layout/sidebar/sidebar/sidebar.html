@@ -21,7 +21,7 @@
     <nav class="flex flex-col flex-1 g-1">
       <a
         class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="projects/project"
+        routerLink="projects"
         routerLinkActive="bg-background"
       >
         <img
@@ -32,12 +32,12 @@
           alt="projects-Icon"
         />
         @if (!isCollapsed()) {
-          <p class="text-sm text-primary font-medium">Projects</p>
+          <a class="text-sm text-primary font-medium" routerLink="projects">Projects</a>
         }
       </a>
       <a
         class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="/projects"
+        routerLink="projects"
         routerLinkActive="bg-background
 "
       >
@@ -52,7 +52,7 @@
       </a>
       <a
         class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="/projects"
+        routerLink="projects"
         routerLinkActive="bg-background"
       >
         <img
@@ -67,7 +67,7 @@
 
       <a
         class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="/projects"
+        routerLink="projects"
         routerLinkActive="bg-background"
       >
         <img
@@ -84,7 +84,7 @@
 
       <a
         class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="/projects"
+        routerLink="projects"
         routerLinkActive="bg-background"
       >
         <img
@@ -148,8 +148,6 @@
 
     <!-- Main Dynamic Content Views -->
     <main class="flex-1 overflow-x-hidden overflow-y-auto p-8">
-      <!-- <p class="text-gray-700">Your layout text or router-outlet content goes here.</p> -->
-      <!-- <tm-add-new-project></tm-add-new-project> -->
       <router-outlet></router-outlet>
     </main>
   </div>

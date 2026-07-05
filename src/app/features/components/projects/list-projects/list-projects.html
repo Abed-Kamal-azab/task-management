@@ -1,5 +1,104 @@
-<p>list-projects works!</p>
-<p>list-projects works!</p>
-<p>list-projects works!</p>
-<p>list-projects works!</p>
-<p>list-projects works!</p>
+<div class="flex flex-col gap-10">
+  <div class="flex items-end justify-between">
+    <div>
+      <p class="font-semibold text-3xl leading-9 text-neutral-high">Projects</p>
+      <p class="text-base leading-6 text-remember">Manage and curate your projects</p>
+    </div>
+    <button
+      routerLink="/projects/add"
+      class="flex gap-2 items-center bg-linear-to-r from-primary to-primary-container text-background px-6 py-3 rounded-xs font-medium text-base leading-6 cursor-pointer hover:opacity-80"
+    >
+      <img src="/assets/icons/add-plus-Icon.svg" alt="add-project-card-Icon" />
+      <p>Create New Project</p>
+    </button>
+  </div>
+
+  @if (isLoading()) {
+    <div class="flex justify-center items-center rounded-lg bg-white p-10">
+      <p class="text-sm text-remember">Loading projects...</p>
+    </div>
+  } @else if (hasError()) {
+    <div class="flex justify-center items-center rounded-lg bg-white p-10">
+      <p class="text-sm text-error">Failed to load projects</p>
+    </div>
+  } @else if (myListProjects().length === 0) {
+    <div class="flex justify-center items-center rounded-lg bg-white p-10">
+      <p class="text-sm text-remember">No projects found</p>
+    </div>
+  } @else {
+    <div class="grid grid-cols-3 gap-6 pb-21">
+      @for (project of myListProjects(); track project.id) {
+        <div class="flex flex-col justify-between rounded-lg bg-white p-6 h-60">
+          <h3 class="font-medium text-lg leading-7 text-neutral-high capitalize">
+            {{ project.name }}
+          </h3>
+          <p class="text-sm text-remember leading-5.5 overflow-y-auto">
+            {{ project.description }}
+          </p>
+          <p class="flex justify-between pt-6">
+            <span class="font-bold text-xs text-placeholder leading-5 uppercase">CREATED AT</span>
+            <span class="font-medium text-sm leading-5 text-remember">{{
+              project.created_at | date: 'd MMM yyyy'
+            }}</span>
+          </p>
+        </div>
+      }
+      <div class="flex flex-col gap-4 justify-center items-center rounded-lg bg-white p-6 h-60">
+        <div
+          routerLink="/projects/add"
+          class="h-12 w-12 bg-Surface-low rounded-xl flex justify-center items-center cursor-pointer"
+        >
+          <img src="/assets/icons/add-project-card-Icon.svg " alt="" />
+        </div>
+        <p
+          routerLink="/projects/add"
+          class="text-sm text-remember tracking-1.5 font-bold leading-5 uppercase cursor-pointer"
+        >
+          ADD PROJECT
+        </p>
+      </div>
+    </div>
+  }
+
+  @if (!isLoading() && !hasError() && myListProjects().length > 0) {
+    <div class="p-8 pt-12 flex items-center justify-between">
+      <p class="font-medium leading-4 text-xs text-remember">
+        Showing {{ myListProjects().length }} of {{ totalCount() }} active projects
+      </p>
+
+      <div class="flex gap-2">
+        <button
+          type="button"
+          [disabled]="currentPage() === 1"
+          (click)="previousPage()"
+          class="h-8 w-8 border border-neutral-low/30 rounded-xs flex items-center justify-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <img src="/assets/icons/left-coolapse-Icon.svg" alt="" class="w-1 h-2r" />
+        </button>
+
+        @for (page of pageNumbers(); track page) {
+          <button
+            type="button"
+            (click)="goToPage(page)"
+            [ngClass]="{
+              'bg-primary text-background': currentPage() === page,
+              'text-remember': currentPage() !== page,
+            }"
+            class="h-8 w-8 border border-neutral-low/30 rounded-xs flex items-center justify-center cursor-pointer"
+          >
+            <p class="font-bold text-xs leading-4">{{ page }}</p>
+          </button>
+        }
+
+        <button
+          type="button"
+          [disabled]="currentPage() === totalPages()"
+          (click)="nextPage()"
+          class="h-8 w-8 border border-neutral-low/30 rounded-xs flex items-center justify-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <img src="/assets/icons/right-collapse-Icon.svg" alt="" class="w-1 h-2r" />
+        </button>
+      </div>
+    </div>
+  }
+</div>

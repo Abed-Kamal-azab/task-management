@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,6 +10,10 @@ export class ApiService {
 
   get<T>(endpoint: string) {
     return this.httpClient.get<T>(`${this.apiUrl}${endpoint}`);
+  }
+
+  getWithHeaders<T>(endpoint: string, headers: HttpHeaders) {
+    return this.httpClient.get<T>(`${this.apiUrl}${endpoint}`, { headers, observe: 'response' });
   }
 
   post<T>(endpoint: string, data: unknown) {
