@@ -10,3 +10,10 @@ export interface ListProjectsResponse {
   created_at: string;
   created_by: string;
 }
+
+export interface ListMembersResponse {
+  avatar: string;
+  name: string;
+  email: string;
+  role: string;
+}

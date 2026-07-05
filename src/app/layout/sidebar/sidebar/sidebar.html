@@ -35,12 +35,7 @@
           <a class="text-sm text-primary font-medium" routerLink="projects">Projects</a>
         }
       </a>
-      <a
-        class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="projects"
-        routerLinkActive="bg-background
-"
-      >
+      <a class="h-10 flex gap-3 py-2.5 px-3 rounded-sm">
         <img
           class="w-5.5 h-4"
           [src]="isCollapsed() ? '/assets/icons/epics2-Icon.svg' : '/assets/icons/epics-Icon.svg'"
@@ -50,11 +45,7 @@
           <p class="text-sm text-primary font-medium">Projects Epics</p>
         }
       </a>
-      <a
-        class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="projects"
-        routerLinkActive="bg-background"
-      >
+      <a class="h-10 flex gap-3 py-2.5 px-3 rounded-sm">
         <img
           class="w-5.5 h-4"
           [src]="isCollapsed() ? '/assets/icons/tasks2-Icon.svg' : '/assets/icons/tasks-Icon.svg'"
@@ -67,7 +58,7 @@
 
       <a
         class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="projects"
+        routerLink="/projects/members/:id"
         routerLinkActive="bg-background"
       >
         <img
@@ -82,11 +73,7 @@
         }
       </a>
 
-      <a
-        class="h-10 flex gap-3 py-2.5 px-3 rounded-sm"
-        routerLink="projects"
-        routerLinkActive="bg-background"
-      >
+      <a class="h-10 flex gap-3 py-2.5 px-3 rounded-sm">
         <img
           class="w-5.5 h-4"
           [src]="

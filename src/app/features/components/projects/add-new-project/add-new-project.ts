@@ -8,16 +8,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { ProjectsService } from '../../../services/projects-service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'tm-add-new-project',
-  imports: [ReactiveFormsModule, FormsModule, NgClass],
+  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink],
   templateUrl: './add-new-project.html',
   styleUrl: './add-new-project.scss',
 })
 export class AddNewProject implements OnInit {
   form!: FormGroup;
   formBuilder = inject(FormBuilder);
+  router = inject(Router);
   projectsService = inject(ProjectsService);
   isAddProjectSuccess = signal<boolean>(false);
   isAddProjectFailed = signal<boolean>(false);
@@ -42,6 +44,7 @@ export class AddNewProject implements OnInit {
         this.form.reset();
         setTimeout(() => {
           this.isAddProjectSuccess.set(false);
+          this.router.navigate(['/projects']);
         }, 5000);
       },
       error: () => {
