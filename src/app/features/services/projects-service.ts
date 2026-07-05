@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from '../../core/services/api-service';
-import { addProjectRequest } from '../../models/projects.model';
+import { addProjectRequest, ListProjectsResponse } from '../../models/projects.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +24,13 @@ export class ProjectsService {
       `rest/v1/rpc/get_projects?limit=${safeLimit}&offset=${safeOffset}`,
       headers,
     );
+  }
+
+  getProjectById(projectId: string) {
+    return this.apiService.get<ListProjectsResponse[]>(`rest/v1/projects?id=eq.${projectId}`);
+  }
+
+  updateProject(projectId: string, data: Partial<ListProjectsResponse>) {
+    return this.apiService.patch(`rest/v1/projects?id=eq.${projectId}`, data);
   }
 }

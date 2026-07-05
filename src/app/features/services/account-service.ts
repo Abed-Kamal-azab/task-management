@@ -39,7 +39,7 @@ export class AccountService {
   }
 
   logOut(password: { password: string | null }): Observable<unknown> {
-    return this.apiService.post('/auth/v1/logout', password).pipe(
+    return this.apiService.post('auth/v1/logout', password).pipe(
       tap(() => {
         localStorage.removeItem(accessTokenKey);
         localStorage.removeItem(refreshTokenKey);

@@ -1,0 +1,120 @@
+<div class="h-16">
+  <div class="flex flex-col gap-4">
+    <div class="flex items-center gap-2 font-bold text-xs tracking-1.2 leading-4">
+      <span class="text-remember/60">PROJECTS</span>
+      <span class="text-remember/40">></span>
+      <span class="text-remember/60">PROJECTS TITLE</span>
+      <span class="text-remember/40">></span>
+      <span class="text-primary">EDIT</span>
+    </div>
+    <p class="font-semibold text--neutral-high text-4xl leading-10">Edit Project</p>
+  </div>
+</div>
+
+<div class="mt-10 max-w-2xl bg-white flex flex-col mx-auto">
+  <div class="p-8 pb-10 flex gap-4 items-center">
+    <div class="flex items-center justify-center w-11.5 h-11 bg-primary-container/10">
+      <img src="/assets/icons/init-project-Icon.svg" alt="" />
+    </div>
+    <div>
+      <p class="font-semibold text-2xl leading-8 text-neutral-high">Edit Project</p>
+      <p class="text-sm leading-5 text-neutral-md">
+        Define the scope and foundational details of your project.
+      </p>
+    </div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="editProject()" class="p-8 flex flex-col gap-8">
+    <div>
+      <p
+        class="font-bold text-xs"
+        [ngClass]="
+          this.form.get('name')?.invalid && this.form.get('name')?.touched
+            ? 'text-error'
+            : 'text-neutral-md'
+        "
+      >
+        PROJECT TITLE <span class="text-error">*</span>
+      </p>
+      <input
+        formControlName="name"
+        type="text"
+        class="w-full h-12 rounded-sm px-4 py-3.5 mt-2 placeholder:text-base placeholder:text-placeholder focus:outline-none"
+        [ngClass]="
+          this.form.get('name')?.invalid && this.form.get('name')?.touched
+            ? 'bg-invalid text-error'
+            : 'bg-Surface-low text-neutral-md'
+        "
+      />
+      @if (this.form.get('name')?.hasError('minlength') && this.form.get('name')?.touched) {
+        <div class="flex gap-1.5 mt-2 items-center">
+          <img src="/assets/icons/warn-Icon.svg" alt="warn-Icon" />
+          <p class="text-xs text-error font-medium leading-4">
+            Project name must be at least 3 characters.
+          </p>
+        </div>
+      }
+    </div>
+
+    <div>
+      <div class="flex items-center justify-between">
+        <p
+          class="font-bold text-xs leading-4"
+          [ngClass]="
+            this.form.get('description')?.invalid && this.form.get('description')?.touched
+              ? 'text-error'
+              : 'text-neutral-md'
+          "
+        >
+          DESCRIPTION
+        </p>
+        <p class="text-xs leading-4 text-neutral-md/60">Optional</p>
+      </div>
+
+      <textarea
+        formControlName="description"
+        [maxLength]="500"
+        #description
+        class="w-full h-40 resize-none rounded-sm px-4 py-3.5 mt-2 mb-2 placeholder:text-base placeholder:text-placeholder focus:outline-none"
+        [ngClass]="
+          this.form.get('description')?.invalid && this.form.get('description')?.touched
+            ? 'bg-invalid text-error'
+            : 'bg-Surface-low text-neutral-md'
+        "
+      ></textarea>
+      <p class="text-xs leading-4 text-neutral-md text-right">
+        {{ description.value.length }} / 500 characters
+      </p>
+    </div>
+
+    <div class="flex items-end justify-between pt-4">
+      <a
+        class="px-6 py-3 rounded-sm font-bold text-sm leading-5 text-neutral-md cursor-pointer hover:opacity-80"
+        routerLink="/projects"
+        >Back</a
+      >
+      <button
+        [disabled]="form.invalid"
+        class="px-8 py-3 rounded-sm bg-linear-to-r from-primary to-primary-container text-background font-bold text-sm leading-5 cursor-pointer hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed"
+        type="submit"
+      >
+        Save Changes
+      </button>
+    </div>
+  </form>
+  @if (isAddProjectSuccess()) {
+    <p class="bg-success p-4 text-sm font-bold">Your project has been created successfully!</p>
+  }
+
+  @if (isAddProjectFailed()) {
+    <p class="bg-error p-4 text-sm text-background font-bold">Failed to create project.</p>
+  }
+  <div class="p-6 bg-Surface-low flex aligns-center gap-3">
+    <img src="/assets/icons/pro-tip-Icon.svg" alt="" />
+    <p class="text-xs leading-5 text-neutral-md">
+      <span class="font-bold">Pro Tip:</span>
+      You can invite project members and assign epics immediately after the initial creation
+      process.
+    </p>
+  </div>
+</div>
