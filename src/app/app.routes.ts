@@ -8,6 +8,7 @@ import { AddNewProject } from './features/components/projects/add-new-project/ad
 import { Sidebar } from './layout/sidebar/sidebar/sidebar';
 import { authGuard, guestGuard } from './core/guards/auth.guard';
 import { EditProject } from './features/components/projects/edit-project/edit-project';
+import { ListProjectMember } from './features/components/projects/list-project-member/list-project-member';
 
 export const routes: Routes = [
   {
@@ -51,6 +52,10 @@ export const routes: Routes = [
       {
         path: 'projects/edit/:id',
         component: EditProject,
+      },
+      {
+        path: 'projects/members/:id',
+        component: ListProjectMember,
       },
     ],
   },

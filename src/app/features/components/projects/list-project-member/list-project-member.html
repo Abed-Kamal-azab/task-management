@@ -1,0 +1,50 @@
+<div class="flex items-end justify-between">
+  <div class="flex flex-col gap-4">
+    <div class="flex items-center gap-2 font-bold text-xs tracking-1.2 leading-4">
+      <span class="text-remember/60">PROJECTS</span>
+      <span class="text-remember/40">></span>
+      <span class="text-remember/60">PROJECTS NAME</span>
+      <span class="text-remember/40">></span>
+      <span class="text-primary">MEMBERS</span>
+    </div>
+    <p class="font-semibold text--neutral-high text-4xl leading-10">Project Members</p>
+  </div>
+  <button
+    routerLink="/projects/add"
+    class="flex gap-2 items-center bg-linear-to-r from-primary to-primary-container text-background px-6 py-3 rounded-xs font-medium text-base leading-6 cursor-pointer hover:opacity-80"
+  >
+    <img src="/assets/icons/invite-member-Icon.svg" alt="add-project-card-Icon" />
+    <p>Invite Member</p>
+  </button>
+</div>
+<div class="w-3xl mt-20 mx-auto border-1 border-neutral-low/10 border-solid shadow-x">
+  <div class="bg-member flex item-center py-5 font-bold text-xs leading-none text-remember">
+    <p class="uppercase px-8 w-sm">Member</p>
+    <p class="uppercase px-8 w-47">role</p>
+    <p class="uppercase px-8 w-16">action</p>
+  </div>
+
+  <div class="flex gap-8 pl-8 border-b-1 border-neutral-low/10 border-solid shadow-x">
+    <div class="w-xs">
+      <div class="py-3 h-16 flex justify-start">
+        <div class="flex gap-4">
+          <div class="w-12 h-12 bg-primary-container flex items-center justify-center rounded-lg">
+            <p class="text-background font-bold text-base">MT</p>
+          </div>
+          <div class="flex flex-col justify-between">
+            <p class="font-semibold text-sm text-neutral-high capitalize">name</p>
+            <p class="text-xs leading-4 ] text-remember">abed-kamal@email.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-47 p-8">
+      <div
+        class="px-3 py-1 rounded-xl uppercase bg-primary text-white font-bold text-xs leading-5 text-center"
+      >
+        owner
+      </div>
+    </div>
+    <img src="/assets/icons/3-dots-Icon.svg" class="mx-auto" />
+  </div>
+</div>

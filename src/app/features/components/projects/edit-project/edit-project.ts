@@ -8,12 +8,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { ProjectsService } from '../../../services/projects-service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ListProjectsResponse } from '../../../../models/projects.model';
 
 @Component({
   selector: 'tm-edit-project',
-  imports: [ReactiveFormsModule, FormsModule, NgClass],
+  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink],
   templateUrl: './edit-project.html',
   styleUrl: './edit-project.scss',
 })
@@ -23,9 +23,11 @@ export class EditProject implements OnInit {
   router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   projectsService = inject(ProjectsService);
-  isAddProjectSuccess = signal<boolean>(false);
-  isAddProjectFailed = signal<boolean>(false);
+
+  isEditProjectSuccess = signal<boolean>(false);
+  isEditProjectFailed = signal<boolean>(false);
   isEdit = signal<boolean>(false);
+
   projectID = this.activatedRoute.snapshot.paramMap.get('id');
   selectedProject: ListProjectsResponse | null = null;
 
