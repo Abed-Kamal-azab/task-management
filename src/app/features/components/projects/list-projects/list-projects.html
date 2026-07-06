@@ -28,7 +28,10 @@
   } @else {
     <div class="grid grid-cols-3 gap-6 pb-21">
       @for (project of myListProjects(); track project.id) {
-        <div class="flex flex-col justify-between rounded-lg bg-white p-6 h-60">
+        <div
+          class="flex flex-col justify-between rounded-lg bg-white p-6 h-60"
+          (click)="getProjectData(project)"
+        >
           <h3 class="font-medium text-lg leading-7 text-neutral-high capitalize">
             {{ project.name }}
           </h3>

@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { ProjectsService } from '../../../services/projects-service';
 import { ListProjectsResponse } from '../../../../models/projects.model';
 import { DatePipe, NgClass } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'tm-list-projects',
@@ -12,6 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class ListProjects implements OnInit {
   projectsService = inject(ProjectsService);
+  private router = inject(Router);
 
   myListProjects = signal<ListProjectsResponse[]>([]);
   currentPage = signal(1);
@@ -22,7 +23,6 @@ export class ListProjects implements OnInit {
 
   isLoading = signal(false);
   hasError = signal(false);
-
   ngOnInit(): void {
     this.loadProjects();
   }
@@ -81,5 +81,11 @@ export class ListProjects implements OnInit {
     const parts = contentRange.split('/');
     const total = parts.length > 1 ? Number(parts[1]) : NaN;
     return Number.isFinite(total) ? total : this.myListProjects().length;
+  }
+
+  getProjectData(project: ListProjectsResponse) {
+    this.router.navigate([`/projects/edit/${project.id}`], {
+      state: { project },
+    });
   }
 }

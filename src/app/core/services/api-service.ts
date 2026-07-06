@@ -20,6 +20,10 @@ export class ApiService {
     return this.httpClient.post<T>(`${this.apiUrl}${endpoint}`, data);
   }
 
+  patch<T>(endpoint: string, data: unknown) {
+    return this.httpClient.patch<T>(`${this.apiUrl}${endpoint}`, data);
+  }
+
   delete<T>(endpoint: string, data?: unknown) {
     return this.httpClient.delete<T>(
       `${this.apiUrl}${endpoint}`,

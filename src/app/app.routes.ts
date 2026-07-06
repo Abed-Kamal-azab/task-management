@@ -7,6 +7,7 @@ import { ListProjects } from './features/components/projects/list-projects/list-
 import { AddNewProject } from './features/components/projects/add-new-project/add-new-project';
 import { Sidebar } from './layout/sidebar/sidebar/sidebar';
 import { authGuard, guestGuard } from './core/guards/auth.guard';
+import { EditProject } from './features/components/projects/edit-project/edit-project';
 
 export const routes: Routes = [
   {
@@ -17,7 +18,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: Login,
-    // canActivate: [guestGuard],
+    canActivate: [guestGuard],
   },
   {
     path: 'forgot-password',
@@ -46,6 +47,10 @@ export const routes: Routes = [
       {
         path: 'projects/add',
         component: AddNewProject,
+      },
+      {
+        path: 'projects/edit/:id',
+        component: EditProject,
       },
     ],
   },
