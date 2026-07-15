@@ -10,10 +10,11 @@ import {
 import { ValidationService } from '../../../../core/services/validation.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AccountService } from '../../../services/account-service';
+import { Button } from '../../../../shared/components/button/button';
 
 @Component({
   selector: 'tm-reset-password',
-  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink, Button],
   templateUrl: './reset-password.html',
   styleUrl: './reset-password.scss',
 })

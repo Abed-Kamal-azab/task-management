@@ -3,10 +3,11 @@ import { ProjectsService } from '../../../services/projects-service';
 import { ListProjectsResponse } from '../../../../models/projects.model';
 import { DatePipe, NgClass } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { Button } from '../../../../shared/components/button/button';
 
 @Component({
   selector: 'tm-list-projects',
-  imports: [DatePipe, RouterLink, NgClass],
+  imports: [DatePipe, RouterLink, NgClass, Button],
   templateUrl: './list-projects.html',
   styleUrl: './list-projects.scss',
 })

@@ -11,7 +11,7 @@
       <p class="text-sm text-neutral-md">Please enter your details to access your workspace</p>
     </div>
 
-    <form [formGroup]="form" (ngSubmit)="login()" class="pb-4 flex flex-col gap-6">
+    <form [formGroup]="form" class="pb-4 flex flex-col gap-6">
       <div>
         <p
           class="font-bold text-xs text-neutral-md"
@@ -69,13 +69,19 @@
         >
       </div>
 
-      <button
+      <!-- <button
         [disabled]="form.invalid"
         type="submit"
         class="cursor-pointer bg-linear-to-r from-primary to-primary-container h-12 font-semibold text-base rounded-sm text-background hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         Log In
-      </button>
+      </button> -->
+      <tm-button
+        [label]="'Log In'"
+        [btnWidth]="'100%'"
+        [isDisabled]="form.invalid"
+        (btnClick)="login()"
+      ></tm-button>
     </form>
 
     <div class="pt-12 text-center">
