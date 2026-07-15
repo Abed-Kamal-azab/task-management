@@ -9,10 +9,11 @@ import {
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AccountService } from '../../../services/account-service';
+import { Button } from '../../../../shared/components/button/button';
 
 @Component({
   selector: 'tm-forget-password',
-  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink, Button],
   templateUrl: './forget-password.html',
   styleUrl: './forget-password.scss',
 })

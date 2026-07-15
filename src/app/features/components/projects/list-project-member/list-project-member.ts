@@ -1,10 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ProjectsService } from '../../../services/projects-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Button } from '../../../../shared/components/button/button';
 
 @Component({
   selector: 'tm-list-project-member',
-  imports: [],
+  imports: [Button, RouterLink],
   templateUrl: './list-project-member.html',
   styleUrl: './list-project-member.scss',
 })

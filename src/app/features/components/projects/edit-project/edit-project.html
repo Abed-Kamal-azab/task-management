@@ -93,13 +93,18 @@
         routerLink="/projects"
         >Back</a
       >
-      <button
+      <!-- <button
         [disabled]="form.invalid"
         class="px-8 py-3 rounded-sm bg-linear-to-r from-primary to-primary-container text-background font-bold text-sm leading-5 cursor-pointer hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed"
         type="submit"
       >
         Save Changes
-      </button>
+      </button> -->
+      <tm-button
+        [label]="'Save Changes'"
+        [isDisabled]="form.invalid"
+        (btnClick)="editProject()"
+      ></tm-button>
     </div>
   </form>
   @if (isEditProjectSuccess()) {

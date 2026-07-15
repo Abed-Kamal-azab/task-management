@@ -21,7 +21,7 @@
       </p>
     </div>
   </div>
-  <form [formGroup]="form" (ngSubmit)="addNewProject()" class="p-8 flex flex-col gap-8">
+  <form [formGroup]="form" class="p-8 flex flex-col gap-8">
     <div>
       <p
         class="font-bold text-xs"
@@ -90,13 +90,18 @@
         routerLink="/projects"
         >Back</a
       >
-      <button
+      <!-- <button
         [disabled]="form.invalid"
         class="px-8 py-3 rounded-sm bg-linear-to-r from-primary to-primary-container text-background font-bold text-sm leading-5 cursor-pointer hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed"
         type="submit"
       >
         Create Project
-      </button>
+      </button> -->
+      <tm-button
+        [isDisabled]="form.invalid"
+        [label]="'Create Project'"
+        (btnClick)="addNewProject()"
+      ></tm-button>
     </div>
   </form>
   @if (isAddProjectSuccess()) {

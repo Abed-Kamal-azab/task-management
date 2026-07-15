@@ -1,0 +1,12 @@
+<button
+  class="flex gap-2 items-center justify-center px-8 py-3 rounded-sm bg-linear-to-r from-primary to-primary-container text-background font-bold text-sm leading-5 cursor-pointer hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed"
+  [style.width]="btnWidth()"
+  type="button"
+  [disabled]="isDisabled()"
+  (click)="doClick($event)"
+>
+  @if (imgSrc()) {
+    <img src="{{ imgSrc() }}" alt=" {{ label() }} icon " class="" />
+  }
+  {{ label() }}
+</button>

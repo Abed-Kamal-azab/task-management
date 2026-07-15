@@ -9,13 +9,18 @@
     </div>
     <p class="font-semibold text--neutral-high text-4xl leading-10">Project Members</p>
   </div>
-  <button
+  <!-- <button
     routerLink="/projects/add"
     class="flex gap-2 items-center bg-linear-to-r from-primary to-primary-container text-background px-6 py-3 rounded-xs font-medium text-base leading-6 cursor-pointer hover:opacity-80"
   >
     <img src="/assets/icons/invite-member-Icon.svg" alt="add-project-card-Icon" />
     <p>Invite Member</p>
-  </button>
+  </button> -->
+  <tm-button
+    routerLink="/projects/add"
+    [label]="'Invite Member'"
+    [imgSrc]="'/assets/icons/invite-member-Icon.svg'"
+  ></tm-button>
 </div>
 <div class="w-3xl mt-20 mx-auto border-1 border-neutral-low/10 border-solid shadow-x">
   <div class="bg-member flex item-center py-5 font-bold text-xs leading-none text-remember">

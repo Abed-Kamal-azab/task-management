@@ -10,10 +10,11 @@ import {
 import { ProjectsService } from '../../../services/projects-service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ListProjectsResponse } from '../../../../models/projects.model';
+import { Button } from '../../../../shared/components/button/button';
 
 @Component({
   selector: 'tm-edit-project',
-  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink, Button],
   templateUrl: './edit-project.html',
   styleUrl: './edit-project.scss',
 })

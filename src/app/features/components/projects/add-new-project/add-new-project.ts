@@ -9,10 +9,11 @@ import {
 } from '@angular/forms';
 import { ProjectsService } from '../../../services/projects-service';
 import { Router, RouterLink } from '@angular/router';
+import { Button } from '../../../../shared/components/button/button';
 
 @Component({
   selector: 'tm-add-new-project',
-  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink, Button],
   templateUrl: './add-new-project.html',
   styleUrl: './add-new-project.scss',
 })
@@ -43,15 +44,15 @@ export class AddNewProject implements OnInit {
         this.isAddProjectSuccess.set(true);
         this.form.reset();
         setTimeout(() => {
-          this.isAddProjectSuccess.set(false);
           this.router.navigate(['/projects']);
-        }, 5000);
+          this.isAddProjectSuccess.set(false);
+        }, 2500);
       },
       error: () => {
         this.isAddProjectFailed.set(true);
         setTimeout(() => {
           this.isAddProjectFailed.set(false);
-        }, 5000);
+        }, 2500);
       },
     });
   }

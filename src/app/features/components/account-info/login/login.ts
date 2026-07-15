@@ -10,10 +10,11 @@ import { NgClass } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AccountService } from '../../../services/account-service';
 import { SignInRequest, SignInResponse } from '../../../../models/accounts.model';
+import { Button } from '../../../../shared/components/button/button';
 
 @Component({
   selector: 'tm-login',
-  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, NgClass, RouterLink, Button],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
